@@ -47,6 +47,7 @@ public class MapFragment extends Fragment{
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+        binding.add.setEnabled(false);
         binding.add.setOnClickListener(v -> {
             DialogAddFragment dialog = new DialogAddFragment();
             FragmentManager fragmentManager = getParentFragmentManager();
@@ -59,14 +60,12 @@ public class MapFragment extends Fragment{
                 googleMap.setOnMapClickListener(new GoogleMap.OnMapClickListener() {
                     @Override
                     public void onMapClick(@NonNull LatLng latLng) {
+                        binding.add.setEnabled(true);
                         googleMap.clear();
                         googleMap.addMarker(new MarkerOptions().position(latLng));
                         currentLatLng = latLng;
                     }
                 });
-                for (Note note : storage.storage) {
-                    googleMap.addMarker(new MarkerOptions().position(note.getLatLng()));
-                }
             }
         });
     }
