@@ -1,4 +1,7 @@
 <resources>
-    <string name="app_name">MaoMe</string>
+    <string name="app_name" translatable="false">MaoMe</string>
     <string name="PasswordAlert">Password must be 6 or more symbols.</string>
+    <string name="notes" translatable="false">Notes</string>
+    <string name="map" translatable="false">Map</string>
+    <string name="profile" translatable="false">Profile</string>
 </resources>
