@@ -60,10 +60,14 @@ public class DialogAddFragment extends DialogFragment {
             text = binding.text.getText().toString();
             latLng = MapFragment.currentLatLng;
             userName = "hehehe";
+            //TODO откуда-то взять userName вместо "hehehe"
             if(imageUri != null && !title.equals("") && !text.equals("") && latLng != null && userName != null) {
-                Note note = new Note(1,title, text, userName, imageUri, latLng);
-                //MapFragment.storage.addNote(note);
-                onDestroyView();
+                Note note = new Note((long) NoteStorage.count,title, text, userName, imageUri, latLng);
+                if(note != null) {
+                    MapFragment.storage.addNote(note);
+                    //TODO все равно NullPointerException, как фиксить хз
+                    dismiss();
+                }
             } else{
                 Toast.makeText(getContext(), "Please fill all fields", Toast.LENGTH_SHORT).show();
             }
